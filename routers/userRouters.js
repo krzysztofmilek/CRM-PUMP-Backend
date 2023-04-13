@@ -12,7 +12,7 @@ const indexViewControllerCustomer = require('../controllers/indexControllerCusto
 //Klient endpoint
 router.get('/customer/data/', indexViewControllerCustomer.dataNow);
 router.get('/customer/findData/?', indexViewControllerCustomer.customerFindData);
-router.post('/customer/addUser', indexViewControllerCustomer.customerCreate); //dodaje Klienta
+router.post('/customer/add', indexViewControllerCustomer.customerCreate); //dodaje Klienta
 router.delete('/customer/delete/:id', indexViewControllerCustomer.customerDelete);
 router.put('/customer/edit/:id', indexViewControllerCustomer.customerUpdate); 
 router.get('/customers/', indexViewControllerCustomer.allCustomers); // wyświetla wszystkich klientów

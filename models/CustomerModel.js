@@ -3,15 +3,23 @@ const mongoose = require('mongoose');
 
     const CustomerModel = new mongoose.Schema(
         {   
-           
-            action:Object,
-            agreement:Boolean,
             city:String,
-            email: String,
-            name: String,  
-            phone: String,
+            email: {type:String, require:true, unique: true},
+            name: {type:String, require:true},
+            phone: {type:String, require:true},
             street: String,
-            zip: String
+            zip: String,
+            agreement_1:Boolean,
+            //data: Date, 
+            active: Boolean,
+            NIP:String,
+            nameCompany:String,
+            id_action: Object,
+            user:{
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"User"
+            }
+          
          },
         { timestamps: true }
 

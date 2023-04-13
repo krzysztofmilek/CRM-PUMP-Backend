@@ -12,13 +12,10 @@ module.exports = {
 
 
     allUsers: (req, res) => {
-        console.log(req.query)
-        console.log("zapytamie")
-        User.find(req.query)
+              User.find(req.query)
             .lean()
             .exec((err, allUser) => {
-                console.log("test")
-                if (err) {
+                              if (err) {
                     res.send("Błąd pobrania użykowników");
                 }
                 res.json(allUser)
@@ -26,20 +23,19 @@ module.exports = {
     },
 
     findData: (req, res) => {
-        //console.log(req.query)
-         User.find(req.query)
+              User.find(req.query)
          .lean()
          .exec((err, findData) => {
                  if (err) {
                      res.send("Błąd wyszukania");
                  }
          res.json(findData)
-      //   console.log(findData)
+  
              });
      },
 
      create: (req, res) => {
-        let newUser = new Uswer(req.body);
+        let newUser = new User(req.body);
         newUser.save();
         res.json(newUser)
     },

@@ -9,15 +9,8 @@ module.exports = {
 
     dataNow: (req, res) => {
     
-       
-
         const start = (new Date().toISOString().replace('T', ' ').substring(0, 10))
-    
-        console.log(start)
-
-   
         let  filter = {data:{$lt:start}}
-        console.log("zapytamie")
         Customer.find(filter)
             .lean()
             .exec((err, dataGet) => {
@@ -58,8 +51,9 @@ module.exports = {
      },
 
      customerCreate: (req, res) => {
+        console.log(req)
         let newCustomer = new Customer(req.body);
-        newUser.save();
+        newCustomer.save();
         res.json(newCustomer)
     },
 

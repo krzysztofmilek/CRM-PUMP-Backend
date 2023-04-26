@@ -21,10 +21,12 @@ router.get('/customers/', indexViewControllerCustomer.allCustomers); // wyświet
 
 
 // Users endpoint
+//router.pos('/signup', (req, res) => res.render('http://localhost:3000/signup/')); 
+router.post('/signup', (req, res) => res.render('../../klient/src/SignUpUser')); 
 router.get('/findData/?', indexViewControllerUser.findData);
 router.post('/addUser', indexViewControllerUser.create); //dodaje usera
 router.delete('/delete/:id', indexViewControllerUser.delete);
-router.get('', indexViewControllerUser.allUsers); // wyświetla wszystkich użytkowników 
+router.get('/allUsers/', indexViewControllerUser.allUsers); // wyświetla wszystkich użytkowników 
 router.put('/edit/:id', indexViewControllerUser.update);
 
 

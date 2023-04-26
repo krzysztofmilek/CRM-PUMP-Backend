@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
             street: String,
             zip: String,
             agreement_1:Boolean,
-            //data: Date, 
+            data: Date, 
             active: Boolean,
             NIP:String,
             nameCompany:String,

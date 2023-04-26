@@ -24,7 +24,7 @@ module.exports = {
 
     allCustomers: (req, res) => {
         console.log(req.query)
-        console.log("zapytamie")
+        console.log("zapytanie")
         Customer.find(req.query)
             .lean()
             .exec((err, allCustomer) => {

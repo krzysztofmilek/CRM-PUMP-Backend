@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const userRouter = require('./routers/userRouters');
 const customerRouter = require('./routers/customerRouters');
 const cookieParser = require("cookie-parser");
-const authHelper = require('./middlewares/authHelper');
+//const authHelper = require('./middlewares/authHelper');
 
 mongoose.connect('mongodb://127.0.0.1:27017/crm_mern');
 
@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-app.use("/", /* authHelper, */ userRouter); 
-app.use("/customer",/* authHelper,  */customerRouter); 
+app.use("/",  userRouter); 
+app.use("/customer",customerRouter); 
 
 
 

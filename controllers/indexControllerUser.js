@@ -1,8 +1,7 @@
-const jwt = require("jsonwebtoken");
+//const jwt = require("jsonwebtoken");
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
-const ACCESS_TOKEN = "oigpiugqprwigrpqiwugrpwiurbw;";
 
 module.exports = {
   //Users Endpoint.............................................
@@ -57,7 +56,7 @@ module.exports = {
           } else {
             res.json({
               error: true,
-              message: "Nieprawidłowe dane logowania",
+               message: "Nieprawidłowe dane logowania",
             });
             return;
           }
@@ -82,14 +81,7 @@ module.exports = {
     });
   },
 
-  editPassword: (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body.password).exec((err) => {
-      if (err) {
-        res.send("Błąd aktualizacji");
-      }
-      res.save({ password: req.body.password });
-    });
-  },
+  
 
   delete: (req, res) => {
     User.findByIdAndDelete(req.params.id).exec((err) => {
@@ -102,7 +94,8 @@ module.exports = {
   },
 
   update: (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body).exec((err, updateUser) => {
+    User.findById(req.params.id ).exec((err, updateUser) => {
+      updateUser.password = req.body.password;
       updateUser.save((err) => {
         if (err) {
           res.send("Błąd aktualizacji");
@@ -112,3 +105,14 @@ module.exports = {
     });
   },
 };
+
+/* update: (req, res) => {
+  User.findById(req.params.id, req.body).exec((err, updateUser) => {
+    updateUser.save((err) => {
+      if (err) {
+        res.send("Błąd aktualizacji");
+      }
+      res.json(updateUser);
+    });
+  });
+}, */

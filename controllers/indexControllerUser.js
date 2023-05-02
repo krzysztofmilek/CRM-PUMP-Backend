@@ -2,7 +2,6 @@
 const User = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
-
 module.exports = {
   //Users Endpoint.............................................
 
@@ -52,11 +51,10 @@ module.exports = {
           if (logged) {
             const token = user.generateAuthToken(user);
             res.json({ name: user.name, jwt: token, access: user.admin });
-        
           } else {
             res.json({
               error: true,
-               message: "Nieprawidłowe dane logowania",
+              message: "Nieprawidłowe dane logowania",
             });
             return;
           }
@@ -70,18 +68,12 @@ module.exports = {
     newUser.save((err) => {
       if (err) {
         res.send("Błąd dodawania użytkownika");
-        res.render("users", {
-          error: true,
-          massage: "Użytkownik istnieje",
-          user: req.body,
-        });
+        
       } else {
-        res.redirect("users");
+        res.json(newUser);
       }
     });
   },
-
-  
 
   delete: (req, res) => {
     User.findByIdAndDelete(req.params.id).exec((err) => {
@@ -93,26 +85,30 @@ module.exports = {
     });
   },
 
+  changePassword: (req, res) => {
+    User.findById(req.params.id).exec((err, updatePassword) => {
+      updatePassword.password = req.body.password;
+      updatePassword.save((err) => {
+        if (err) {
+          res.send("Błąd aktualizacji");
+        }
+       console.log(updatePassword);
+       res.send({update:true});
+      });
+    });
+  },
+ 
   update: (req, res) => {
-    User.findById(req.params.id ).exec((err, updateUser) => {
-      updateUser.password = req.body.password;
-      updateUser.save((err) => {
+    User.findByIdAndUpdate(req.params.id, req.body)
+    .exec(
+      (err, updateUser) => {
         if (err) {
           res.send("Błąd aktualizacji");
         }
         res.json(updateUser);
-      });
-    });
+      }
+    );
   },
+
 };
 
-/* update: (req, res) => {
-  User.findById(req.params.id, req.body).exec((err, updateUser) => {
-    updateUser.save((err) => {
-      if (err) {
-        res.send("Błąd aktualizacji");
-      }
-      res.json(updateUser);
-    });
-  });
-}, */

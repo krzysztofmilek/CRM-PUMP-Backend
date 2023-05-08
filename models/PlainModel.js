@@ -15,7 +15,8 @@ const mongoose = require('mongoose');
             9: Number,
             10: Number,
             11: Number,
-            id_user: Object
+            id_user: Object,
+            name: String
             
           
          },

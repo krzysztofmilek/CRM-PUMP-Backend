@@ -28,4 +28,18 @@ module.exports = {
       res.json({ deleted: true });
     });
   },
+  
+  plainUpdate: (req, res) => {
+    Plain.findByIdAndUpdate(req.params.id, req.body).exec(
+      (err, updatePlain) => {
+        if (err) {
+          res.send("Błąd aktualizacji");
+        }
+        res.json(updatePlain);
+      }
+    );
+  },
+
+
+
 };

@@ -63,6 +63,12 @@ module.exports = {
     });
   },
 
+  logout:(req, res) =>{
+    
+    req = req.generateAuthToken(null);
+  res.send("Wylogowano")
+  },
+
   create: (req, res) => {
     let newUser = new User(req.body);
     newUser.save((err) => {

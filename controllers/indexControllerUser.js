@@ -50,7 +50,7 @@ module.exports = {
           }
           if (logged) {
             const token = user.generateAuthToken(user);
-            res.json({ name: user.name, jwt: token, access: user.admin });
+            res.json({ name: user.name, jwt: token, access: user.admin, id_user: user._id});
           } else {
             res.json({
               error: true,

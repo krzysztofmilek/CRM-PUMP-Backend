@@ -45,7 +45,8 @@ module.exports = {
     console.log(req);
     let newCustomer = new Customer(req.body);
     newCustomer.save();
-    res.json(newCustomer);
+     res.json(newCustomer);
+    
   },
 
   customerDelete: (req, res) => {

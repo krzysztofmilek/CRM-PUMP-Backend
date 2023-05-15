@@ -36,6 +36,7 @@ module.exports = {
           res.send("Błąd aktualizacji");
         }
         res.json(updatePlain);
+      
       }
     );
   },

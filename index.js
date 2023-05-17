@@ -21,6 +21,14 @@ const cookieParser = require("cookie-parser");
 mongoose.connect('mongodb://127.0.0.1:27017/crm_mern');
 
 app.set('view engine', 'jade')
+
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,8 +39,8 @@ app.use("/customer",customerRouter);
 app.use("/plain", plainRouter);
 app.use('/', uploadRouter);
 
-const getTime = moment().format('YYYYMMDDHHmmss');
-console.log(getTime)
+/* const getTime = moment().format('YYYYMMDDHHmmss');
+console.log(getTime) */
 
 
 app.listen(8080, function () {

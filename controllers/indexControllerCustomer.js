@@ -15,12 +15,12 @@ module.exports = {
   },
 
   allCustomers: (req, res) => {
-    console.log(req.query);
-    console.log("zapytanie");
+   // console.log(req.query);
+  //  console.log("zapytanie");
     Customer.find(req.query)
       .lean()
       .exec((err, allCustomer) => {
-        console.log("test");
+       // console.log("test");
         if (err) {
           res.send("Błąd pobrania użykowników");
         }
@@ -42,10 +42,10 @@ module.exports = {
   },
 
   customerCreate: (req, res) => {
-    console.log(req);
+   // console.log(req);
     let newCustomer = new Customer(req.body);
     newCustomer.save();
-     res.json(newCustomer);
+     res.send("Dodano")
     
   },
 

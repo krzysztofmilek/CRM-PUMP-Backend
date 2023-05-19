@@ -45,7 +45,7 @@ module.exports = {
    // console.log(req);
     let newCustomer = new Customer(req.body);
     newCustomer.save();
-     res.send("Dodano")
+     res.json(newCustomer);
     
   },
 

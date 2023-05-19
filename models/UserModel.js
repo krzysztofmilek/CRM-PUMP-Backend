@@ -16,7 +16,12 @@ const UserModel = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Customer",
-      },
+      }],
+      action: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Actionr",
+        },
     ],
   },
   { timestamps: true }

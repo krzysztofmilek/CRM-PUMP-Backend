@@ -8,6 +8,7 @@ const customerRouter = require('./routers/customerRouters');
 const plainRouter = require('./routers/plainRouters');
 const uploadRouter = require('./routers/uploadRouters');
 const tempRouter = require('./routers/tempRouters');
+const actionRouter = require('./routers/actionRouters');
 const moment = require('moment');
 moment.locale();   
 
@@ -37,6 +38,7 @@ app.use("/customer",customerRouter);
 app.use("/plain", plainRouter);
 app.use('/', uploadRouter);
 app.use('/temp', tempRouter);
+app.use('/action', actionRouter);
 
 /* const getTime = moment().format('YYYYMMDDHHmmss');
 console.log(getTime) */

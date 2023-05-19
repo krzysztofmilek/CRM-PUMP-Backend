@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
             conatactWay:String,
             direction:String,
             fileName:String,
-            status:String, //open, closed
+            status:String, //open, closed enum
             user:{
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"User"

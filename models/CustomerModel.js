@@ -19,12 +19,12 @@ const CustomerModel = new mongoose.Schema(
         ref: "Action",
       },
     ],
-    user: [
+     user: 
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-      },
-    ],
+      }, 
+    
   },
   { timestamps: true }
 );

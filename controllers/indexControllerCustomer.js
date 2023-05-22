@@ -1,5 +1,6 @@
 const Customer = require("../models/CustomerModel");
 
+
 module.exports = {
   dataNow: (req, res) => {
     const start = new Date().toISOString().replace("T", " ").substring(0, 10);
@@ -42,9 +43,9 @@ module.exports = {
   },
 
   customerCreate: (req, res) => {
-   // console.log(req);
     let newCustomer = new Customer(req.body);
     newCustomer.save();
+   //console.log(req.body)
      res.json(newCustomer);
     
   },

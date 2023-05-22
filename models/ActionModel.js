@@ -9,14 +9,14 @@ const mongoose = require('mongoose');
             direction:String,
             fileName:String,
             status:String, //open, closed enum
-            user:{
-                type:mongoose.Schema.Types.ObjectId,
+           
+            user:{type:mongoose.Schema.Types.ObjectId,
                 ref:"User"
-            },
-            customer:{
+            }, 
+             customer:{
                 type:mongoose.Schema.Types.ObjectId,
                 ref:"Customer"
-            }
+            } 
           
          },
         { timestamps: true }

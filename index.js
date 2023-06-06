@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const fs = require("fs");
 
 const userRouter = require('./routers/userRouters');
 const customerRouter = require('./routers/customerRouters');
@@ -42,7 +43,7 @@ app.use('/action', actionRouter);
 
 /* const getTime = moment().format('YYYYMMDDHHmmss');
 console.log(getTime) */
-
+//fs.readFile('localhost:8080/public/import/importCustomerFile/20230522152000_1.docx')
 
 app.listen(8080, function () {
     console.log("SERWER NODE.JS LISTENING ON PORT 8080");

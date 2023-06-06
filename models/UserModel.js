@@ -11,7 +11,7 @@ const UserModel = new mongoose.Schema(
     //confirmPassword: { type: String, require: true },
     phone: { type: String, require: true },
     position: { type: String, require: true },
-    email: { type: String, require: true, unique: true },
+    email: { type: String, require: true, unique: true, trim: true },
     customers: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +20,7 @@ const UserModel = new mongoose.Schema(
       action: [
         {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Actionr",
+          ref: "Action",
         },
     ],
   },
@@ -50,7 +50,7 @@ console.log(user.isModified("password"))
 
 
 UserModel.methods.generateAuthToken = (user) =>{
- const token = jwt.sign({ _id: user._id }, 'secret',{expiresIn: '60'});
+ const token = jwt.sign({ _id: user._id }, 'secret',{expiresIn: '600'});
  return token;
 
 }

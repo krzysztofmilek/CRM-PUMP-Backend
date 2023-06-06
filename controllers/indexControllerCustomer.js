@@ -1,6 +1,5 @@
 const Customer = require("../models/CustomerModel");
 
-
 module.exports = {
   dataNow: (req, res) => {
     const start = new Date().toISOString().replace("T", " ").substring(0, 10);
@@ -16,12 +15,12 @@ module.exports = {
   },
 
   allCustomers: (req, res) => {
-   // console.log(req.query);
-  //  console.log("zapytanie");
+    // console.log(req.query);
+    //  console.log("zapytanie");
     Customer.find(req.query)
       .lean()
       .exec((err, allCustomer) => {
-       // console.log("test");
+        // console.log("test");
         if (err) {
           res.send("Błąd pobrania użykowników");
         }
@@ -43,11 +42,22 @@ module.exports = {
   },
 
   customerCreate: (req, res) => {
-    let newCustomer = new Customer(req.body);
-    newCustomer.save();
-   //console.log(req.body)
-     res.json(newCustomer);
-    
+   
+      let newCustomer = new Customer(req.body);
+      newCustomer.save()
+      .then(()=>{
+        res.json(newCustomer);
+
+      }  ).catch(err => { 
+        res.json({error: true});
+      });
+      //console.log(req.body)
+      //res.json(newCustomer);
+   
+      /* res.json(err);
+      console.error(err);
+      return; */
+   
   },
 
   customerDelete: (req, res) => {
